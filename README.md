@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Anugerah Avirama Nawasena Website
+
+This is a [Next.js](https://nextjs.org/) project for the Anugerah Avirama Nawasena awards website, built with Next.js 15.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18.17.0 or later
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/your-username/aan-awards-website.git
+```
+
+2. Navigate to the project directory
+```bash
+cd aan-awards-website
+```
+
+3. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
+
+4. Create a `.env.local` file based on the `.env.local.example` template
+```bash
+cp .env.local.example .env.local
+```
+
+5. Start the development server
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The project follows Next.js 15 App Router structure:
 
-## Learn More
+```
+aan-awards-website/
+├── app/                  # Next.js 15 App Router 
+│   ├── layout.js         # Root layout
+│   ├── page.js           # Home page
+│   ├── about/page.js     # About page
+│   ├── past-events/page.js # Past events page
+│   ├── contact/page.js   # Contact page
+│   └── globals.css       # Global styles
+├── components/           # Reusable React components
+│   ├── Header.js         # Navigation header
+│   ├── HeroBanner.js     # Main hero section
+│   ├── AboutSection.js   # "Apa Itu" section
+│   ├── Testimonial.js    # Testimonial component
+│   ├── Footer.js         # Page footer
+│   └── Button.js         # Reusable button component
+├── public/               # Static assets
+│   ├── images/           # Image assets
+│   └── favicon.ico       # Site favicon
+└── styles/               # Component-specific styles
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Development Guidelines
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Component Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Each component should have its own file in the `components/` directory
+- Use CSS Modules for styling (located in the `styles/` directory)
+- Keep components small and focused on a single responsibility
 
-## Deploy on Vercel
+### Styling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Use CSS Modules for component-specific styling
+- Global styles are defined in `app/globals.css`
+- The site uses a color palette defined with CSS variables in `globals.css`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Responsive Design
+
+- The site is fully responsive with mobile-first approach
+- Use media queries defined in component-specific CSS files
+- Break
