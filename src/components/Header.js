@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import Logo from "../../public/logo.png";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,7 +56,7 @@ export default function Header() {
             transition={{ duration: 0.5 }}
           >
             <Image
-              src="/images/logo.png"
+              src={Logo}
               alt="Anugerah Avirama Nawasena Logo"
               width={150}
               height={40}

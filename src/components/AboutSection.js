@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import Link from "next/link";
+import ImageBanner from "../../public/banner2.jpg";
 
 export default function AboutSection() {
   const [ref, inView] = useInView({
@@ -65,7 +66,7 @@ export default function AboutSection() {
             <div className="absolute -right-5 -bottom-5 w-24 h-24 bg-primary/20 rounded-lg -z-10"></div>
             <div className="rounded-xl overflow-hidden shadow-xl">
               <Image
-                src="/images/awards.jpg"
+                src={ImageBanner}
                 alt="Anugerah Avirama Nawasena Awards"
                 width={600}
                 height={400}

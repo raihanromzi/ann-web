@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
+import TestimonialImage from "../../public/testimoni.jpg";
 
 export default function Testimonial() {
   const [ref, inView] = useInView({
@@ -29,7 +30,7 @@ export default function Testimonial() {
           >
             <div className="relative w-full h-full">
               <Image
-                src="/images/profile.jpg"
+                src={TestimonialImage}
                 alt="Profile Avatar"
                 width={150}
                 height={150}
@@ -60,7 +61,7 @@ export default function Testimonial() {
             <div className="flex items-center">
               <div className="h-px bg-white/30 w-10 mr-4"></div>
               <p className="text-white/80 font-medium">
-                Divina Greenway,{" "}
+                [Nama Pemenang],{" "}
                 <span className="text-secondary">Pemenang AAN 2023</span>
               </p>
             </div>

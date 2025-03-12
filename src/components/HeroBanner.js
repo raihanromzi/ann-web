@@ -1,15 +1,23 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
+import HeroBannerImage from "../../public/hero-bg.jpg";
 
 export default function HeroBanner() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background with overlay */}
-      <div
-        className="absolute inset-0 bg-hero-pattern bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
-      >
+      <div className="absolute inset-0">
+        {/* Hero Image */}
+        <Image
+          src={HeroBannerImage}
+          alt="Hero Background"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70"></div>
       </div>
 
@@ -36,7 +44,7 @@ export default function HeroBanner() {
               {" "}
               Masa Depan yang Lebih Hijau
             </span>{" "}
-            💚
+            🌏 🪴
           </motion.h2>
 
           <motion.p

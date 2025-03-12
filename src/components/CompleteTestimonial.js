@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import Link from "next/link";
+import ImageTestimonial from "../../public/testimoni1.png";
+import ImageTestimonial2 from "../../public/testimoni.jpg";
 
 export default function CompleteTestimonial() {
   const [ref, inView] = useInView({
@@ -56,7 +58,7 @@ export default function CompleteTestimonial() {
                 <div className="flex items-center mb-8">
                   <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
                     <Image
-                      src="/images/profile.jpg"
+                      src={ImageTestimonial2}
                       alt="Pemenang AAN 2023"
                       width={48}
                       height={48}
@@ -102,7 +104,7 @@ export default function CompleteTestimonial() {
                 <div className="absolute -top-6 -right-6 w-40 h-40 bg-secondary/20 rounded-lg -z-10"></div>
                 <div className="rounded-xl overflow-hidden shadow-xl">
                   <Image
-                    src="/images/testimonial-winner.svg"
+                    src={ImageTestimonial}
                     alt="Pemenang Anugerah Avirama Nawasena 2023"
                     width={600}
                     height={450}

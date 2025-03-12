@@ -9,6 +9,7 @@ import {
   faLinkedin,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import ImageLogo from "../../public/logo.png";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,26 +25,30 @@ export default function Footer() {
       url: "https://linkedin.com/company/sbm-itb",
       name: "LinkedIn",
     },
-    { icon: faYoutube, url: "https://youtube.com/sbm-itb", name: "YouTube" },
+    {
+      icon: faYoutube,
+      url: "https://www.youtube.com/@itbofficial",
+      name: "YouTube",
+    },
   ];
 
   const quickLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Past Events", href: "/past-events" },
-    { name: "Registration", href: "/register" },
+    { name: "Registration", href: "/contact" },
     { name: "Contact", href: "/contact" },
   ];
 
   return (
     <footer className="bg-primary text-white">
       <div className="container mx-auto px-4 pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           {/* Logo and description */}
           <div className="col-span-1 lg:col-span-1">
             <Link href="/" className="inline-block mb-6">
               <Image
-                src="/images/logo.png"
+                src={ImageLogo}
                 alt="Anugerah Avirama Nawasena Logo"
                 width={180}
                 height={50}
@@ -70,7 +75,6 @@ export default function Footer() {
               ))}
             </div>
           </div>
-
           {/* Contact information */}
           <div className="col-span-1 lg:col-span-1">
             <h3 className="text-lg font-bold mb-4 relative pb-2 inline-block">
@@ -107,7 +111,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
           {/* Quick Links */}
           <div className="col-span-1 lg:col-span-1">
             <h3 className="text-lg font-bold mb-4 relative pb-2 inline-block">
@@ -126,30 +129,6 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div className="col-span-1 lg:col-span-1">
-            <h3 className="text-lg font-bold mb-4 relative pb-2 inline-block">
-              Subscribe to Newsletter
-              <span className="absolute bottom-0 left-0 w-12 h-1 bg-secondary"></span>
-            </h3>
-            <p className="text-white/80 mb-4">
-              Dapatkan informasi terbaru tentang Anugerah Avirama Nawasena
-            </p>
-            <form className="flex flex-col space-y-2">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="bg-white/10 text-white border-0 rounded-md px-4 py-3 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-secondary"
-              />
-              <button
-                type="submit"
-                className="bg-secondary text-primary font-semibold rounded-md px-4 py-3 hover:bg-secondary-light transition-colors duration-300"
-              >
-                Subscribe
-              </button>
-            </form>
           </div>
         </div>
 

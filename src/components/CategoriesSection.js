@@ -2,6 +2,11 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
+import Icon1 from "../../public/icon1.svg";
+import Icon2 from "../../public/icon2.svg";
+import Icon3 from "../../public/icon3.svg";
+import Icon4 from "../../public/icon4.svg";
+import Icon5 from "../../public/icon5.svg";
 
 export default function CategoriesSection() {
   const [ref, inView] = useInView({
@@ -13,39 +18,43 @@ export default function CategoriesSection() {
     {
       id: 1,
       title: "Inovasi Produk Berkelanjutan",
-      icon: "/images/lightbulb-icon.png",
+      icon: Icon1,
       description:
         "Produk dengan dampak lingkungan minimal dan manfaat sosial maksimal",
     },
     {
       id: 2,
       title: "Layanan yang Ramah Lingkungan",
-      icon: "/images/leaf-icon.png",
+      icon: Icon2,
       description:
         "Layanan yang mendukung pelestarian lingkungan dan keberlanjutan",
     },
     {
       id: 3,
       title: "Kampanye Komunikasi ESG",
-      icon: "/images/megaphone-icon.png",
+      icon: Icon3,
       description:
         "Komunikasi efektif tentang upaya ESG dan edukasi keberlanjutan",
     },
     {
       id: 4,
       title: "Penerapan Diversity, Equality, and Inclusion (DEI)",
-      icon: "/images/fist-icon.png",
+      icon: Icon4,
       description:
         "Inisiatif untuk menciptakan lingkungan yang inklusif dan beragam",
     },
     {
       id: 5,
       title: "Inisiatif Sosial yang Mendukung Keberlanjutan",
-      icon: "/images/community-icon.png",
+      icon: Icon5,
       description:
         "Program sosial dengan dampak positif pada komunitas dan lingkungan",
     },
   ];
+
+  // Split categories into top row (3 items) and bottom row (2 items)
+  const topRow = categories.slice(0, 3);
+  const bottomRow = categories.slice(3);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -109,38 +118,74 @@ export default function CategoriesSection() {
           </motion.p>
         </motion.div>
 
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {categories.map((category, index) => (
-            <motion.div
-              key={category.id}
-              variants={itemVariants}
-              custom={index}
-              className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg border border-white/10"
-            >
-              <div className="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
-                <Image
-                  src={category.icon}
-                  alt={category.title}
-                  width={40}
-                  height={40}
-                  className="w-8 h-8 object-contain"
-                />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-center text-white">
-                {category.title}
-              </h3>
-              <p className="text-white/80 text-center text-sm">
-                {category.description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+        <div className="max-w-5xl mx-auto">
+          {/* Top row - 3 items */}
+          <motion.div
+            ref={ref}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={containerVariants}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"
+          >
+            {topRow.map((category, index) => (
+              <motion.div
+                key={category.id}
+                variants={itemVariants}
+                custom={index}
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg border border-white/10"
+              >
+                <div className="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+                  <Image
+                    src={category.icon}
+                    alt={category.title}
+                    width={100}
+                    height={100}
+                    className="w-14 h-14 object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-center text-white">
+                  {category.title}
+                </h3>
+                <p className="text-white/80 text-center text-sm">
+                  {category.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Bottom row - 2 items, centered */}
+          <motion.div
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={containerVariants}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:px-24 lg:px-32"
+          >
+            {bottomRow.map((category, index) => (
+              <motion.div
+                key={category.id}
+                variants={itemVariants}
+                custom={index + 3} // Continue the animation sequence
+                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg border border-white/10"
+              >
+                <div className="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+                  <Image
+                    src={category.icon}
+                    alt={category.title}
+                    width={40}
+                    height={40}
+                    className="w-8 h-8 object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-center text-white">
+                  {category.title}
+                </h3>
+                <p className="text-white/80 text-center text-sm">
+                  {category.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

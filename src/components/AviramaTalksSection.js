@@ -3,6 +3,11 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import Link from "next/link";
+import ImageWebinar1 from "../../public/webinar1.jpg";
+import ImageWebinar2 from "../../public/webinar2.jpeg";
+import ImageWebinar3 from "../../public/webinar3.jpg";
+import ImageWebinar4 from "../../public/webinar4.jpg";
+import ImageWebinar5 from "../../public/webinar5.jpg";
 
 export default function AviramaTalksSection() {
   const [ref, inView] = useInView({
@@ -17,7 +22,7 @@ export default function AviramaTalksSection() {
       subtitle: "Transforming Our Society to Sustainability",
       date: "Tanggal: 27 September 2024",
       speaker: "Pembicara: Pemimpin perubahan sosial, pakar keberlanjutan.",
-      image: "/images/webinar-1.jpg",
+      image: ImageWebinar2,
     },
     {
       id: 2,
@@ -26,7 +31,7 @@ export default function AviramaTalksSection() {
       date: "Tanggal: 4 Oktober 2024",
       speaker:
         "Pembicara: Pemimpin gerakan sosial, wirausaha sosial yang sukses.",
-      image: "/images/webinar-2.jpg",
+      image: ImageWebinar3,
     },
     {
       id: 3,
@@ -34,7 +39,7 @@ export default function AviramaTalksSection() {
       subtitle: "Prioritising Supply Chain Resilience in ESG",
       date: "Tanggal: 11 Oktober 2024",
       speaker: "Pembicara: Ahli rantai pasok dan ESG, pemimpin industri.",
-      image: "/images/webinar-3.jpg",
+      image: ImageWebinar4,
     },
     {
       id: 4,
@@ -42,17 +47,7 @@ export default function AviramaTalksSection() {
       subtitle: "Circular Economy – A Sustainable Future",
       date: "Tanggal: 18 Oktober 2024",
       speaker: "Pembicara: Ahli ekonomi sirkular, pemimpin inovasi sirkular.",
-      image: "/images/webinar-4.jpg",
-    },
-    {
-      id: 5,
-      title: "Webinar 5:",
-      subtitle:
-        "Financial Innovation for ESG: Leveraging Sustainable Finance for Impact",
-      date: "Tanggal: 25 Oktober 2024",
-      speaker:
-        "Pembicara: Pakar Keuangan berkelanjutan, CEO Fintech Inovatif, Perwakilan Bank Pembangunan",
-      image: "/images/webinar-5.jpg",
+      image: ImageWebinar5,
     },
   ];
 
@@ -142,7 +137,7 @@ export default function AviramaTalksSection() {
             <motion.div variants={itemVariants} className="lg:w-1/2">
               <div className="relative rounded-xl overflow-hidden shadow-lg">
                 <Image
-                  src="/images/avirama-webinar-main.jpg"
+                  src={ImageWebinar1}
                   alt="Avirama Talks Webinar"
                   width={600}
                   height={400}
@@ -173,9 +168,11 @@ export default function AviramaTalksSection() {
                       <Image
                         src={webinar.image}
                         alt={`${webinar.title} ${webinar.subtitle}`}
-                        fill
-                        className="object-cover"
+                        width={1080}
+                        height={1350}
+                        className="w-full h-auto object-cover"
                       />
+
                       <div className="absolute top-4 left-4 bg-secondary text-primary px-3 py-1 rounded-full text-sm font-bold">
                         {webinar.title.replace(":", "")}
                       </div>
