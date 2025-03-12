@@ -5,14 +5,13 @@ import AboutSection from "@/components/AboutSection";
 import CategoriesSection from "@/components/CategoriesSection";
 import ScheduleSection from "@/components/ScheduleSection";
 import RegistrationSection from "@/components/RegistrationSection";
-import Footer from "@/components/Footer";
 import AviramaTalksSection from "@/components/AviramaTalksSection";
 import CompleteTestimonial from "@/components/CompleteTestimonial";
-import "@/globals.css";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main>
+    <main className="min-h-screen overflow-hidden">
       <Header />
       <HeroBanner />
       <Testimonial />

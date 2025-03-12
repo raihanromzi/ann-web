@@ -1,94 +1,164 @@
 "use client";
-import styles from "../styles/Footer.module.css";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import {
+  faInstagram,
+  faLinkedin,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    {
+      icon: faInstagram,
+      url: "https://instagram.com/aan.sbmitb",
+      name: "Instagram",
+    },
+    {
+      icon: faLinkedin,
+      url: "https://linkedin.com/company/sbm-itb",
+      name: "LinkedIn",
+    },
+    { icon: faYoutube, url: "https://youtube.com/sbm-itb", name: "YouTube" },
+  ];
+
+  const quickLinks = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Past Events", href: "/past-events" },
+    { name: "Registration", href: "/register" },
+    { name: "Contact", href: "/contact" },
+  ];
+
   return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
-        <h2 className={styles.title}>Hubungi Kami</h2>
-
-        <div className={styles.contactInfo}>
-          <div className={styles.contactItem}>
-            <div className={styles.icon}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="M22 7l-10 7L2 7" />
-              </svg>
+    <footer className="bg-primary text-white">
+      <div className="container mx-auto px-4 pt-16 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          {/* Logo and description */}
+          <div className="col-span-1 lg:col-span-1">
+            <Link href="/" className="inline-block mb-6">
+              <Image
+                src="/images/logo.png"
+                alt="Anugerah Avirama Nawasena Logo"
+                width={180}
+                height={50}
+                className="h-12 w-auto"
+              />
+            </Link>
+            <p className="text-white/80 mb-6">
+              Menghargai Inovasi Berkelanjutan untuk Masa Depan yang Lebih
+              Hijau.
+            </p>
+            <div className="flex space-x-4">
+              {socialLinks.map((link, index) => (
+                <motion.a
+                  key={index}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary transition-all duration-300"
+                  whileHover={{ y: -3 }}
+                  aria-label={link.name}
+                >
+                  <FontAwesomeIcon icon={link.icon} className="w-5 h-5" />
+                </motion.a>
+              ))}
             </div>
-            <span className={styles.contactText}>
-              <a href="mailto:avirama.nawasena@itb.ac.id">
-                avirama.nawasena@itb.ac.id
-              </a>
-            </span>
           </div>
 
-          <div className={styles.contactItem}>
-            <div className={styles.icon}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-              </svg>
-            </div>
-            <span className={styles.contactText}>
-              <a href="tel:+6281228995982">0812-2899-5982</a> (Agustin Anandia)
-            </span>
+          {/* Contact information */}
+          <div className="col-span-1 lg:col-span-1">
+            <h3 className="text-lg font-bold mb-4 relative pb-2 inline-block">
+              Kontak
+              <span className="absolute bottom-0 left-0 w-12 h-1 bg-secondary"></span>
+            </h3>
+            <ul className="space-y-4">
+              <li className="flex items-start">
+                <div className="mt-1 text-secondary mr-3">
+                  <FontAwesomeIcon icon={faEnvelope} className="w-4 h-4" />
+                </div>
+                <div>
+                  <a
+                    href="mailto:avirama.nawasena@itb.ac.id"
+                    className="hover:text-secondary transition-colors duration-200"
+                  >
+                    avirama.nawasena@itb.ac.id
+                  </a>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <div className="mt-1 text-secondary mr-3">
+                  <FontAwesomeIcon icon={faPhone} className="w-4 h-4" />
+                </div>
+                <div>
+                  <a
+                    href="tel:+6281228995982"
+                    className="hover:text-secondary transition-colors duration-200"
+                  >
+                    0812-2899-5982
+                  </a>
+                  <p className="text-sm text-white/60">(Agustin Anandia)</p>
+                </div>
+              </li>
+            </ul>
           </div>
 
-          <div className={styles.contactItem}>
-            <div className={styles.icon}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+          {/* Quick Links */}
+          <div className="col-span-1 lg:col-span-1">
+            <h3 className="text-lg font-bold mb-4 relative pb-2 inline-block">
+              Quick Links
+              <span className="absolute bottom-0 left-0 w-12 h-1 bg-secondary"></span>
+            </h3>
+            <ul className="space-y-2">
+              {quickLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.href}
+                    className="hover:text-secondary transition-colors duration-200 inline-block py-1"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div className="col-span-1 lg:col-span-1">
+            <h3 className="text-lg font-bold mb-4 relative pb-2 inline-block">
+              Subscribe to Newsletter
+              <span className="absolute bottom-0 left-0 w-12 h-1 bg-secondary"></span>
+            </h3>
+            <p className="text-white/80 mb-4">
+              Dapatkan informasi terbaru tentang Anugerah Avirama Nawasena
+            </p>
+            <form className="flex flex-col space-y-2">
+              <input
+                type="email"
+                placeholder="Your email address"
+                className="bg-white/10 text-white border-0 rounded-md px-4 py-3 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-secondary"
+              />
+              <button
+                type="submit"
+                className="bg-secondary text-primary font-semibold rounded-md px-4 py-3 hover:bg-secondary-light transition-colors duration-300"
               >
-                <rect x="2" y="2" width="20" height="20" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="18" cy="6" r="1" />
-              </svg>
-            </div>
-            <span className={styles.contactText}>
-              <a
-                href="https://instagram.com/aan.sbmitb"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                @aan.sbmitb
-              </a>
-            </span>
+                Subscribe
+              </button>
+            </form>
           </div>
         </div>
-      </div>
 
-      <div className={styles.copyright}>
-        <p>
-          &copy; {new Date().getFullYear()} Anugerah Avirama Nawasena. All
-          rights reserved.
-        </p>
+        <div className="pt-8 border-t border-white/20 text-center">
+          <p className="text-white/60 text-sm">
+            &copy; {currentYear} Anugerah Avirama Nawasena. All rights reserved.
+            Developed by School of Business and Management ITB.
+          </p>
+        </div>
       </div>
     </footer>
   );
