@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
-import TestimonialImage from "../../public/testimoni.jpg";
+import TaryonoDarusman from "../../public/TaryonoDarusman.png";
 
 export default function Testimonial() {
   const [ref, inView] = useInView({
@@ -30,7 +30,7 @@ export default function Testimonial() {
           >
             <div className="relative w-full h-full">
               <Image
-                src={TestimonialImage}
+                src={TaryonoDarusman}
                 alt="Profile Avatar"
                 width={150}
                 height={150}
@@ -55,13 +55,15 @@ export default function Testimonial() {
               <path d="M14.017 21v-7.391l4.983-2.609v10h-4.983zm-10.017 0v-7.391l4.983-2.609v10h-4.983zm10.017-10.783l-4.983 2.609-4.983-2.609 4.983-2.608 4.983 2.608zm-10.017 0l-4.983 2.609v-10h4.983v7.391zm10.017-7.391v-3.217l4.983-2.609v10l-4.983-2.609v-1.565z" />
             </svg>
             <blockquote className="text-xl md:text-2xl font-light italic text-white mb-4 leading-relaxed">
-              "Penghargaan ini mengubah cara kami berinovasi menuju masa depan
-              yang lebih baik."
+              "Penghargaan ini merupakan hasil dari upaya kami dalam menjaga
+              lingkungan. Saya mengajak teman-teman semua untuk turut serta
+              terlibat dalam pergerakan ini."
             </blockquote>
             <div className="flex items-center">
               <div className="h-px bg-white/30 w-10 mr-4"></div>
               <p className="text-white/80 font-medium">
-                [Nama Pemenang],{" "}
+                Taryono Darusman, Research and Development Director at Katingan
+                Mentaya Project,{" "}
                 <span className="text-secondary">Pemenang AAN 2023</span>
               </p>
             </div>
