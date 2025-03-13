@@ -138,9 +138,9 @@ export default function CategoriesSection() {
                   <Image
                     src={category.icon}
                     alt={category.title}
-                    width={100}
-                    height={100}
-                    className="w-14 h-14 object-contain"
+                    width={120}
+                    height={120}
+                    className="w-18 h-18 object-contain"
                   />
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-center text-white">
@@ -171,9 +171,9 @@ export default function CategoriesSection() {
                   <Image
                     src={category.icon}
                     alt={category.title}
-                    width={40}
-                    height={40}
-                    className="w-8 h-8 object-contain"
+                    width={120}
+                    height={120}
+                    className="w-18 h-18 object-contain"
                   />
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-center text-white">
