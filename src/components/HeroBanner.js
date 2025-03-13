@@ -3,8 +3,20 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import HeroBannerImage from "../../public/hero-bg.jpg";
+import RegistrationModal from "./RegistrationModal";
+import { useState } from "react";
 
 export default function HeroBanner() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background with overlay */}
@@ -64,9 +76,9 @@ export default function HeroBanner() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6"
           >
-            <Link href="/register" className="btn btn-secondary">
+            <button onClick={openModal} className="btn btn-secondary">
               Daftarkan Inovasi Anda
-            </Link>
+            </button>
             <Link
               href="/about"
               className="btn btn-outline text-white border-white hover:bg-white hover:text-primary"
@@ -106,6 +118,8 @@ export default function HeroBanner() {
           </svg>
         </motion.div>
       </div>
+
+      <RegistrationModal isOpen={isModalOpen} onClose={closeModal} />
     </section>
   );
 }

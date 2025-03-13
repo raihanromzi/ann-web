@@ -8,48 +8,31 @@ import {
   faEnvelope,
   faPhone,
   faLocationDot,
+  faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [message, setMessage] = useState("");
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+  const handleMessageChange = (e) => {
+    setMessage(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const handleSendToDM = () => {
+    // Encode the message for use in a URL
+    const encodedMessage = encodeURIComponent(message);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
+    // Instagram doesn't have a direct message URL structure that works consistently,
+    // so we'll open their profile where users can then send a DM
+    window.open(
+      "https://instagram.com/aan.sbmitb",
+      "_blank",
+      "noopener,noreferrer"
+    );
 
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 5000);
-    }, 1500);
+    // Reset the message field after sending
+    setMessage("");
   };
 
   const contactInfo = [
@@ -101,7 +84,7 @@ export default function Contact() {
             <p className="text-lg text-white/80 mb-0">
               Terima kasih atas minat Anda pada Anugerah Avirama Nawasena. Untuk
               pertanyaan atau informasi lebih lanjut, hubungi kami melalui
-              formulir di bawah atau email.
+              Instagram DM atau email.
             </p>
           </motion.div>
         </div>
@@ -111,73 +94,28 @@ export default function Contact() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Form */}
+            {/* Instagram DM Section */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-white rounded-2xl shadow-card p-8"
             >
-              <h2 className="text-2xl font-bold text-primary mb-6">
-                Kirim Pesan
-              </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Nama
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="Nama Anda"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                      placeholder="Email Anda"
-                    />
-                  </div>
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mr-4">
+                  <FontAwesomeIcon icon={faInstagram} className="w-6 h-6" />
                 </div>
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Subjek
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                    placeholder="Subjek pesan"
-                  />
-                </div>
+                <h2 className="text-2xl font-bold text-primary">
+                  Kirim Pesan via Instagram
+                </h2>
+              </div>
+
+              <p className="text-gray-600 mb-6">
+                Anda dapat menghubungi kami langsung melalui pesan Instagram.
+                Tim kami akan merespons secepat mungkin.
+              </p>
+
+              <div className="space-y-6">
                 <div>
                   <label
                     htmlFor="message"
@@ -188,32 +126,28 @@ export default function Contact() {
                   <textarea
                     id="message"
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
+                    value={message}
+                    onChange={handleMessageChange}
                     rows="5"
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                    placeholder="Tulis pesan Anda di sini..."
+                    placeholder="Tulis pesan Anda di sini, lalu klik tombol 'Kirim ke Instagram' untuk melanjutkan..."
                   ></textarea>
                 </div>
 
-                {submitSuccess && (
-                  <div className="bg-green-100 text-green-700 p-3 rounded-lg">
-                    Pesan Anda telah berhasil terkirim. Kami akan segera
-                    menghubungi Anda kembali.
-                  </div>
-                )}
-
                 <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`btn btn-primary w-full ${
-                    isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-                  }`}
+                  type="button"
+                  onClick={handleSendToDM}
+                  className="btn bg-gradient-to-r from-pink-500 to-purple-500 text-white w-full hover:from-pink-600 hover:to-purple-600 transition-all duration-300"
                 >
-                  {isSubmitting ? "Mengirim..." : "Kirim Pesan"}
+                  <FontAwesomeIcon icon={faPaperPlane} className="mr-2" />
+                  Kirim ke Instagram
                 </button>
-              </form>
+
+                <div className="text-sm text-gray-500 text-center mt-4">
+                  Tombol di atas akan membuka profil Instagram kami. Anda dapat
+                  langsung mengirim DM dari profil tersebut.
+                </div>
+              </div>
             </motion.div>
 
             {/* Contact Information */}

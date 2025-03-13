@@ -4,6 +4,12 @@ import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import HeroBannerImage from "../../../public/hero-bg2.jpeg";
+import Icon1 from "../../../public/icon1.svg";
+import Icon2 from "../../../public/icon2.svg";
+import Icon3 from "../../../public/icon3.svg";
+import Icon4 from "../../../public/icon4.svg";
+import Icon5 from "../../../public/icon5.svg";
 
 export default function About() {
   const [ref1, inView1] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -30,32 +36,36 @@ export default function About() {
       title: "Inovasi Ramah Lingkungan",
       description:
         "Untuk inovasi yang memberikan dampak positif terhadap lingkungan.",
-      icon: "/images/eco-innovation.svg",
+      icon: Icon1,
     },
     {
       title: "Inovasi Sosial",
       description:
         "Untuk inovasi yang mengatasi tantangan sosial dan meningkatkan kesejahteraan masyarakat.",
-      icon: "/images/social-innovation.svg",
+      icon: Icon2,
     },
     {
       title: "Inovasi Tata Kelola",
       description:
         "Untuk praktik tata kelola yang mendukung transparansi dan akuntabilitas.",
-      icon: "/images/governance-innovation.svg",
+      icon: Icon3,
     },
     {
       title: "Startup Berkelanjutan",
       description: "Untuk startup dengan model bisnis yang berkelanjutan.",
-      icon: "/images/sustainable-startup.svg",
+      icon: Icon4,
     },
     {
       title: "Wirausaha Sosial",
       description:
         "Untuk wirausahawan yang mengatasi masalah sosial melalui pendekatan bisnis.",
-      icon: "/images/social-entrepreneurship.svg",
+      icon: Icon5,
     },
   ];
+
+  // Split categories into top row (3 items) and bottom row (2 items)
+  const topRow = categories.slice(0, 3);
+  const bottomRow = categories.slice(3);
 
   return (
     <main className="min-h-screen overflow-hidden pt-20">
@@ -124,7 +134,7 @@ export default function About() {
                 <div className="absolute -left-4 -top-4 w-20 h-20 bg-secondary/20 rounded-lg -z-10"></div>
                 <div className="rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/images/about-background.jpg"
+                    src={HeroBannerImage}
                     alt="Latar Belakang AAN"
                     width={600}
                     height={400}
@@ -199,36 +209,71 @@ export default function About() {
             </motion.p>
           </motion.div>
 
-          <motion.div
-            initial="hidden"
-            animate={inView2 ? "visible" : "hidden"}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-          >
-            {categories.map((category, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn}
-                className="bg-white rounded-xl p-6 shadow-card hover:shadow-hover transition-all duration-300 border border-gray-100"
-              >
-                <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
-                  <Image
-                    src={category.icon}
-                    alt={category.title}
-                    width={40}
-                    height={40}
-                    className="w-8 h-8 object-contain"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-center text-primary">
-                  {category.title}
-                </h3>
-                <p className="text-gray-600 text-center">
-                  {category.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
+          <div className="max-w-6xl mx-auto">
+            {/* Top row - 3 items */}
+            <motion.div
+              initial="hidden"
+              animate={inView2 ? "visible" : "hidden"}
+              variants={staggerContainer}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"
+            >
+              {topRow.map((category, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeIn}
+                  className="bg-white rounded-xl p-6 shadow-card hover:shadow-hover transition-all duration-300 border border-gray-100"
+                >
+                  <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+                    <Image
+                      src={category.icon}
+                      alt={category.title}
+                      width={40}
+                      height={40}
+                      className="w-8 h-8 object-contain"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 text-center text-primary">
+                    {category.title}
+                  </h3>
+                  <p className="text-gray-600 text-center">
+                    {category.description}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Bottom row - 2 items, centered */}
+            <motion.div
+              initial="hidden"
+              animate={inView2 ? "visible" : "hidden"}
+              variants={staggerContainer}
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 md:px-24 lg:px-32"
+            >
+              {bottomRow.map((category, index) => (
+                <motion.div
+                  key={index + 3}
+                  variants={fadeIn}
+                  className="bg-white rounded-xl p-6 shadow-card hover:shadow-hover transition-all duration-300 border border-gray-100"
+                >
+                  <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+                    <Image
+                      src={category.icon}
+                      alt={category.title}
+                      width={40}
+                      height={40}
+                      className="w-8 h-8 object-contain"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 text-center text-primary">
+                    {category.title}
+                  </h3>
+                  <p className="text-gray-600 text-center">
+                    {category.description}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </section>
 
