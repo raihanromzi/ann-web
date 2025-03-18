@@ -24,6 +24,9 @@ export const metadata = {
   title: "Anugerah Avirama Nawasena 2024",
   description:
     "Menghargai Inovasi Berkelanjutan untuk Masa Depan yang Lebih Hijau",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }) {
